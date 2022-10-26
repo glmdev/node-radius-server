@@ -2,6 +2,7 @@ import NodeCache from 'node-cache';
 import { Cache, ExpirationStrategy, MemoryStorage } from '@hokify/node-ts-cache';
 import { IAuthentication } from './interfaces/Authentication.js';
 import { IContextLogger, ILogger } from './interfaces/Logger.js';
+import { IPacket } from './interfaces/PacketHandler';
 
 const cacheStrategy = new ExpirationStrategy(new MemoryStorage());
 /**
@@ -18,7 +19,7 @@ export class Authentication implements IAuthentication {
 	}
 
 	@Cache(cacheStrategy, { ttl: 60000 })
-	async authenticate(username: string, password: string): Promise<boolean> {
+	async authenticate(username: string, password: string, packet?: IPacket): Promise<boolean> {
 		const cacheKey = `usr:${username}|pwd:${password}`;
 		const fromCache = this.cache.get(cacheKey) as undefined | boolean;
 		if (fromCache !== undefined) {
@@ -26,7 +27,7 @@ export class Authentication implements IAuthentication {
 			return fromCache;
 		}
 
-		const authResult = await this.authenticator.authenticate(username, password);
+		const authResult = await this.authenticator.authenticate(username, password, packet);
 		this.logger.log(`Auth Result for user ${username}`, authResult ? 'SUCCESS' : 'Failure');
 		this.cache.set(cacheKey, !!authResult, authResult ? 86400 : 60); // cache for one day on success, otherwise just for 60 seconds
 

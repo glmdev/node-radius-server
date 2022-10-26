@@ -3,6 +3,7 @@ import * as tls from 'tls';
 import * as fs from 'fs';
 import { IAuthentication } from '../interfaces/Authentication.js';
 import { IContextLogger, ILogger } from '../interfaces/Logger.js';
+import { IPacket } from '../interfaces/PacketHandler';
 
 const usernameFields = ['posixUid', 'mail'];
 
@@ -124,6 +125,7 @@ export class GoogleLDAPAuth implements IAuthentication {
 	async authenticate(
 		username: string,
 		password: string,
+		packet?: IPacket,
 		count = 0,
 		forceFetching = false
 	): Promise<boolean> {
@@ -150,7 +152,7 @@ export class GoogleLDAPAuth implements IAuthentication {
 		const dn = resolvedDNs[username];
 		if (!dn) {
 			if (!dnsFetched && !forceFetching) {
-				return this.authenticate(username, password, count, true);
+				return this.authenticate(username, password, packet, count, true);
 			}
 			// this.logger.this.logger.debug('this.allValidDNsCache', this.allValidDNsCache);
 			this.logger.error(`invalid username, not found in DN: ${username}`); // , this.allValidDNsCache);
@@ -166,7 +168,7 @@ export class GoogleLDAPAuth implements IAuthentication {
 					if (err && (err as any).stack && (err as any).stack.includes(`ldap.google.com closed`)) {
 						count += 1;
 						// wait 1 second to give the ldap error handler time to reconnect
-						setTimeout(() => resolve(this.authenticate(dn, password)), 2000);
+						setTimeout(() => resolve(this.authenticate(dn, password, packet)), 2000);
 						return;
 					}
 

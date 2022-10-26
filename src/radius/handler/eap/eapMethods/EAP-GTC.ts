@@ -1,7 +1,11 @@
 // https://tools.ietf.org/html/rfc5281 TTLS v0
 // https://tools.ietf.org/html/draft-funk-eap-ttls-v1-00 TTLS v1 (not implemented)
 /* eslint-disable no-bitwise */
-import { IPacketHandlerResult, PacketResponseCode } from '../../../../interfaces/PacketHandler.js';
+import {
+	IPacket,
+	IPacketHandlerResult,
+	PacketResponseCode,
+} from '../../../../interfaces/PacketHandler.js';
 import { IEAPMethod } from '../../../../interfaces/EAPMethod.js';
 import { IAuthentication } from '../../../../interfaces/Authentication.js';
 import { buildEAPResponse, decodeEAPHeader } from '../EAPHelper.js';
@@ -34,7 +38,7 @@ export class EAPGTC implements IEAPMethod {
 		_identifier: number,
 		_stateID: string,
 		msg: Buffer,
-		_,
+		packet?: IPacket,
 		identity?: string
 	): Promise<IPacketHandlerResult> {
 		const username = identity; // this.loginData.get(stateID) as Buffer | undefined;
@@ -51,7 +55,7 @@ export class EAPGTC implements IEAPMethod {
 			this.logger.debug('username', username, username.toString());
 			this.logger.debug('token', token, token.toString());
 
-			const success = await this.authentication.authenticate(username.toString(), token.toString());
+			const success = await this.authentication.authenticate(username.toString(), token.toString(), packet);
 
 			return {
 				code: success ? PacketResponseCode.AccessAccept : PacketResponseCode.AccessReject,

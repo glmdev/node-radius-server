@@ -33,7 +33,8 @@ export class UserPasswordPacketHandler implements IPacketHandler {
 
 		const authenticated = await this.authentication.authenticate(
 			username.toString(),
-			password.toString()
+			password.toString(),
+			packet
 		);
 		if (authenticated) {
 			// success
