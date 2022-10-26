@@ -1,6 +1,6 @@
 import radius from 'radius';
 import { EventEmitter } from 'events';
-import { IPacketHandlerResult, PacketResponseCode } from '../interfaces/PacketHandler.js';
+import { IPacket, IPacketHandlerResult, PacketResponseCode } from '../interfaces/PacketHandler.js';
 
 import { PacketHandler } from './PacketHandler.js';
 import { UDPServer } from '../server/UDPServer.js';
@@ -74,7 +74,7 @@ export class RadiusServer extends UDPServer {
 	async handleMessage(
 		msg: Buffer
 	): Promise<{ data: Buffer; expectAcknowledgment?: boolean } | undefined> {
-		const packet = radius.decode({ packet: msg, secret: this.options.secret });
+		const packet = await this.decodeMessage(msg);
 
 		if (packet.code !== 'Access-Request') {
 			this.logger.error('unknown packet type: ', packet.code);
@@ -93,12 +93,16 @@ export class RadiusServer extends UDPServer {
 			data: radius.encode_response({
 				packet,
 				code: response.code,
-				secret: this.options.secret,
+				secret: packet.secret || this.options.secret,
 				attributes: response.attributes,
 			}),
 			// if message is accept or reject, we conside this as final message
 			// this means we do not expect a reponse from the client again (acknowledgement for package)
 			expectAcknowledgment: response.code === PacketResponseCode.AccessChallenge,
 		};
+	}
+
+	async decodeMessage(msg: Buffer): Promise<radius.RadiusPacket & IPacket> {
+		return radius.decode({ packet: msg, secret: this.options.secret });
 	}
 }

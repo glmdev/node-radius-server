@@ -16,6 +16,7 @@ export interface IPacketAttributes {
 export interface IPacket {
 	attributes: { [key: string]: string | Buffer };
 	authenticator?: Buffer;
+	secret?: string;
 }
 
 export interface IPacketHandler {

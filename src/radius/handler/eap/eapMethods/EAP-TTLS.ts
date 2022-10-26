@@ -366,13 +366,13 @@ export class EAPTTLS implements IEAPMethod {
 			attributes.push([
 				'Vendor-Specific',
 				311,
-				[[16, encodeTunnelPW(keyingMaterial.slice(64), packet.authenticator, this.secret)]],
+				[[16, encodeTunnelPW(keyingMaterial.slice(64), packet.authenticator, packet.secret || this.secret)]],
 			]); //  MS-MPPE-Send-Key
 
 			attributes.push([
 				'Vendor-Specific',
 				311,
-				[[17, encodeTunnelPW(keyingMaterial.slice(0, 64), packet.authenticator, this.secret)]],
+				[[17, encodeTunnelPW(keyingMaterial.slice(0, 64), packet.authenticator, packet.secret || this.secret)]],
 			]); // MS-MPPE-Recv-Key
 		} else {
 			this.logger.error(
