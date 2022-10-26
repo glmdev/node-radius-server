@@ -1,6 +1,6 @@
 {
-	"name": "radius-server",
-	"description": "radius server for google LDAP and TTLS",
+	"name": "@coreid/radius-server",
+	"description": "CoreID's fork of Simon Tretter's radius server for google LDAP and TTLS",
 	"version": "2.1.4",
 	"engines": {
 		"node": ">13.10.1"
@@ -14,7 +14,7 @@
 		"dist",
 		"ssl"
 	],
-	"homepage": "https://github.com/simllll/node-radius-server",
+	"homepage": "https://github.com/garrettmills/node-radius-server",
 	"scripts": {
 		"release": "npm run build && standard-version",
 		"debug": "LOGLEVEL=verbose node --tls-min-v1.0 dist/app.js",
