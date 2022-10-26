@@ -2,6 +2,62 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 2.2.0 (2022-10-26)
+
+
+### Features
+
+* add debug pkg to reduce output ([9fe25a8](https://github.com/glmdev/node-radius-server/commit/9fe25a8b497071ea9276785b7f7710ae0e1e88f8))
+* add more auth providers and cleanup google auth ([3f600c6](https://github.com/glmdev/node-radius-server/commit/3f600c664ffa7315053d47773c7f9d5060b68d32))
+* allow setting vlan for authenticated users ([7022750](https://github.com/glmdev/node-radius-server/commit/7022750c9831f72b797c7d528fd0300fe4023045))
+* **cli:** allow setting config vars via cli ([d9ff95b](https://github.com/glmdev/node-radius-server/commit/d9ff95bbbbea9ade9721e3f5d4dc2323988da3d6))
+* inner tunnel for TTSL support added ([6aa4b9f](https://github.com/glmdev/node-radius-server/commit/6aa4b9f92efb271ee327d3d70bccba27284304ee))
+* new auth mechnasimn via http post ([#99](https://github.com/glmdev/node-radius-server/issues/99)) ([279541a](https://github.com/glmdev/node-radius-server/commit/279541a669ca9b70847c7c25f265f1bf77bc8a51))
+* restructure to allow usage in other mode projects ([#269](https://github.com/glmdev/node-radius-server/issues/269)) ([341e9d2](https://github.com/glmdev/node-radius-server/commit/341e9d2aea7ab2838c7e3af2e8e4b7d9918bf1f3))
+* **ssl:** enable session resumptions for even quicker reintinaliztions :) ([e1b4bb5](https://github.com/glmdev/node-radius-server/commit/e1b4bb5597ac74f10b120a5f8cfef7b407a48c8f))
+
+
+### Bug Fixes
+
+* a lot of bug fixes, first running version for windows and android :) ([0cb807a](https://github.com/glmdev/node-radius-server/commit/0cb807a555febec461edf1280fe1a7e1b72186b0))
+* a lot of bug fixes, first running version for windows and android :) ([4989c2b](https://github.com/glmdev/node-radius-server/commit/4989c2b6bc162a1688e84c21919835cb8637854c))
+* add MS-MPPE-Send-Key and MS-MPPE-Recv-Key ([7e28c60](https://github.com/glmdev/node-radius-server/commit/7e28c60d81abe4c2c5269babbf6ef5951d65d682))
+* **auth:** cache only valid results for one day ([a8a0247](https://github.com/glmdev/node-radius-server/commit/a8a02478ce522eb51c46517b4176aa0d50481676))
+* **auth:** improve google auth ([0baf815](https://github.com/glmdev/node-radius-server/commit/0baf8155bf74fed9e08826b1aea8242f72c81878))
+* binary run ([35f0d98](https://github.com/glmdev/node-radius-server/commit/35f0d98bc9cc6e15543f491495123f2c0268cf8c))
+* binary run ([65e7d5f](https://github.com/glmdev/node-radius-server/commit/65e7d5f4855cff90d9c8e69b300e1180bac3f1a5))
+* cleaner output ([9dc8771](https://github.com/glmdev/node-radius-server/commit/9dc8771a21963a138e9f8b706b7554bc13c12955))
+* **config:** use __dirname to resolve path to ssl certs ([7a28a0d](https://github.com/glmdev/node-radius-server/commit/7a28a0dc6bfbae307765e03f4b15c57c84fa0dc2))
+* context for logger ([fa0ecd4](https://github.com/glmdev/node-radius-server/commit/fa0ecd40cec45a1cf03649a825daa3ccd8aea28d))
+* docs ([cca4dce](https://github.com/glmdev/node-radius-server/commit/cca4dce96142d2b2d04b419bd7500e3841262235))
+* **docs:** add examples ([a3ed0be](https://github.com/glmdev/node-radius-server/commit/a3ed0be02db0a7fcd89544c89d9b0ee11e949808))
+* **docs:** better file names ([5897498](https://github.com/glmdev/node-radius-server/commit/589749883c4c881c3af753530987d6f57d8d809d))
+* **docs:** fix some typos ([5519391](https://github.com/glmdev/node-radius-server/commit/5519391aa3c688422da8d98a3bd789615738b974))
+* eap call is using wrong this, needs more refactoring later ([837453f](https://github.com/glmdev/node-radius-server/commit/837453fca250abb45f1069405b96e29fc0e3e9c4))
+* **eap-ttls:** reset last processed identifier ([7179c16](https://github.com/glmdev/node-radius-server/commit/7179c1682d33ead0e00d7aae17a97428f1fa4ea5))
+* **eap:** catch decoding errors ([97ea3fa](https://github.com/glmdev/node-radius-server/commit/97ea3fad1d8d1d79eab38ee5e45e17ef6ed20caa))
+* **eap:** concat buffers if they are an array ([3d03658](https://github.com/glmdev/node-radius-server/commit/3d03658a43a924017ad5da84599f57a21b3ae27e))
+* **eap:** output state on error ([e71f0b3](https://github.com/glmdev/node-radius-server/commit/e71f0b3d804070f67ad2d42880c516ce612ee7b0))
+* esm export fix and add test for import ([#281](https://github.com/glmdev/node-radius-server/issues/281)) ([1226dcd](https://github.com/glmdev/node-radius-server/commit/1226dcdb4e7b5f3e6a46c80df2c20cb5f6edd470))
+* further improve logging again ([4715fea](https://github.com/glmdev/node-radius-server/commit/4715fea0901d6c95f05559f2d4353bbd76c5ffc9))
+* improve coping with long running auth requests ([7ca60a2](https://github.com/glmdev/node-radius-server/commit/7ca60a20cc24eb8100ed1f20fe18e7ec664fd176))
+* improve google ldap auth ([24ab648](https://github.com/glmdev/node-radius-server/commit/24ab6486a6eaf242957cd33bb5d4c82a5fcd9a9a))
+* ldap auth failed auth and added test scripts ([5e5005c](https://github.com/glmdev/node-radius-server/commit/5e5005cf6bcbc3d9450db3651478249f8deb92a6))
+* logging cleanup ([6a73c39](https://github.com/glmdev/node-radius-server/commit/6a73c39a57c1485998541f7fb6123da25b39bb08))
+* logging functionality ([e8010cb](https://github.com/glmdev/node-radius-server/commit/e8010cb10ba58de6f8d52859d3a7eccb2373e190))
+* logging level mixup ([35d24e5](https://github.com/glmdev/node-radius-server/commit/35d24e5046b58ea47f97191a4ad6291d8db2a863))
+* parse large responses correclty ([ef82a99](https://github.com/glmdev/node-radius-server/commit/ef82a9991153f636de7acaa7c3024a04d7c9b2a7))
+* pass in correct argvs ([32732b7](https://github.com/glmdev/node-radius-server/commit/32732b744b2605dd286314542718aec6d1862bc1))
+* pkg upgrades and small fixes ([5290ac3](https://github.com/glmdev/node-radius-server/commit/5290ac37c0da907b2e59a0b2cf20a8f8e473baca))
+* radius import ([b1e4d5d](https://github.com/glmdev/node-radius-server/commit/b1e4d5dea4820aa073afb62fe5d7ca74900aaf65))
+* remove empty bytes from password buffer in StaticAuth [#116](https://github.com/glmdev/node-radius-server/issues/116) ([a06026f](https://github.com/glmdev/node-radius-server/commit/a06026f8876656bb7bc5bb6218cf1550e4ea9945))
+* session resumptions + google ldap auth ([66fbcf4](https://github.com/glmdev/node-radius-server/commit/66fbcf4ca83cc6c3813b0015c0e2d8f69c8db6e6))
+* skip username on auth response ([7450673](https://github.com/glmdev/node-radius-server/commit/74506735eaa52bc1840eea3f9aa1dd30cb718352))
+* ssl again ([a624bc1](https://github.com/glmdev/node-radius-server/commit/a624bc15b0e1fde4f2a268c62500b090e4f366a5))
+* **ssl:** move files ([f53a423](https://github.com/glmdev/node-radius-server/commit/f53a42335bb583af7575b8cf5fcf5fe58cdeaed4))
+* **tls:** allow tls v1.0 ([55e6dc4](https://github.com/glmdev/node-radius-server/commit/55e6dc4b0b2ddc2d24704a0ef57c56b8905e7aa4))
+* yargs usage ([9cb0fe5](https://github.com/glmdev/node-radius-server/commit/9cb0fe53281e79a3994f9600687d57cff3c6e4e4))
+
 ### [2.1.4](https://github.com/simllll/node-radius-server/compare/v2.1.3...v2.1.4) (2022-04-12)
 
 

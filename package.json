@@ -1,7 +1,7 @@
 {
 	"name": "@coreid/radius-server",
 	"description": "CoreID's fork of Simon Tretter's radius server for google LDAP and TTLS",
-	"version": "2.1.4",
+	"version": "2.2.0",
 	"engines": {
 		"node": ">13.10.1"
 	},
